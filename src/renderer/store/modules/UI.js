@@ -5,12 +5,14 @@ const state = {
     invoiceNumber: '',
     subtotalOnInvoice: '',
     invoiceTotal: '',
-    countyTax: ''
+    countyTax: 0.01
   },
   entries: [
     {
-      quantity: '',
-      price: ''
+      quantity: 0,
+      price: 0,
+      total: 0,
+      subtotal: 0
     }
   ]
 }
@@ -18,8 +20,8 @@ const state = {
 const mutations = {
   addEntry (state) {
     state.entries.push({
-      quantity: '',
-      price: '',
+      quantity: 0,
+      price: 0,
       total: 0,
       subtotal: 0
     })

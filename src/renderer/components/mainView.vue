@@ -8,7 +8,7 @@
       :entry="entry" 
       v-for="(entry, entryIndex) in entries"></card>
 
-      <button @click="addEntry">+</button>
+      <button class="add" @click="addEntry">+</button>
     </div>
   </div>
 </template>
@@ -39,8 +39,30 @@
 </script>
 
 <style lang="sass">
-  .content
-    width: calc(75% - 25px)
-    margin-left: calc(25% + 25px)
-    float: left
+    #wrapper
+        height: 100vh
+        width: 100%
+        position: fixed
+
+        .content
+            height: 100vh
+            overflow-y: auto
+            width: 75%
+            margin-left: 25%
+            float: left
+            background: url(/static/back.jpg) no-repeat center center fixed
+            background-size: cover
+
+            button.add
+                background-color: green
+                color: white
+                border-radius: 50%
+                height: 50px
+                width: 50px
+                border: 2px solid white
+                margin: 40px auto
+                display: block
+
+                &:focus
+                    outline: none
 </style>
