@@ -87,15 +87,16 @@
       },
       computed: {
         materialAdjustment () {
-          return (this.cardTotal - (this.cardSubTotal * 0.06 + Number(this.countyTax))).toFixed(2)
+          return Math.abs((Number(this.cardTotal - this.cardSubTotal * (1.06 + Number(this.countyTax)))).toFixed(2))
         },
         cardSubTotal () {
-          let subTotal = 0
+          let cardSubTotal = 0
           this.$store.state.UI.entries.forEach(entry => {
             if (!entry.subTotal) return
-            subTotal = subTotal + Number(entry.subTotal)
+            cardSubTotal = cardSubTotal + Number(entry.subTotal)
           })
-          return subTotal
+          console.log('cardSubTotal', cardSubTotal)
+          return cardSubTotal
         },
         cardTotal () {
           let cardTotal = 0
@@ -103,10 +104,13 @@
             if (!entry.total) return
             cardTotal = cardTotal + Number(entry.total)
           })
+          console.log('cardTotal', cardTotal)
           return cardTotal
         },
         taxAccrual () {
           return Math.abs((Number(this.$store.state.UI.globalVariables.invoiceTotal) - Number(this.cardTotal))).toFixed(2)
+          // need to make negatives have () around them like (4.96) for -4.96.
+          // need to make positive green and negative red
         },
         countyTax: {
           get () {
