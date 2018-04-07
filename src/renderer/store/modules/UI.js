@@ -12,7 +12,8 @@ const state = {
       quantity: 0,
       price: 0,
       total: 0,
-      subtotal: 0
+      subtotal: 0,
+      totalTax: 0
     }
   ]
 }
@@ -23,20 +24,21 @@ const mutations = {
       quantity: 0,
       price: 0,
       total: 0,
-      subtotal: 0
+      subtotal: 0,
+      totalTax: 0
     })
   },
   updateTotal (state, obj) {
     let { index, total } = obj
     state.entries[index].total = total
-    // let replacement = Object.assign({}, state.entries[index])
-    // state.entries.splice(index, 1, replacement)
+  },
+  updateTotalTax (state, obj) {
+    let { index, totalTax } = obj
+    state.entries[index].totalTax = totalTax
   },
   updateSubTotal (state, obj) {
     let { index, subTotal } = obj
     state.entries[index].subTotal = subTotal
-    // let replacement = Object.assign({}, state.entries[index])
-    // state.entries.splice(index, 1, replacement)
   },
   removeEntry (state, index) {
     state.entries.splice(index, 1)
