@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: 'taxv2'
+    name: 'AccountingTools'
   }
 </script>
 

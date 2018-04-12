@@ -1,7 +1,6 @@
 <template>
       <div class="card">
-          {{drawCheckerBoard(6)}}
-          <button class="remove" @click="removeEntry">x</button>
+          <button @click="removeEntry">x</button>
         <div class="card-body">
           <div class="row">
             <div class="col-6">
@@ -55,25 +54,6 @@ export default {
     numberWithCommasAndDollarSign (x) {
       if (!x) return
       return '$' + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-    },
-    drawCheckerBoard (size) {
-      let row = {
-        rowTemp: [],
-        evenRow: [],
-        oddRow: []
-      }
-      for (let i = 0; i < size + 1; i++) {
-        if (i % 2 === 0) row.rowTemp.push('-')
-        else row.rowTemp.push('#')
-      }
-
-      row.oddRow = row.rowTemp.slice(0, -1)
-      row.evenRow = row.rowTemp.slice(1)
-
-      for (let i = 0; i < size; i++) {
-        if (i % 2 === 0) console.log(row.evenRow.join(' '))
-        else console.log(row.oddRow.join(' '))
-      }
     }
   },
   computed: {
