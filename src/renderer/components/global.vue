@@ -11,7 +11,7 @@
                     </div>
                     <input type="text"
                            class="form-control"
-                           placeholder="Vendor"
+                           placeholder=""
                            aria-label="Vendor"
                            aria-describedby="basic-addon1"
                            v-model="vendor">
@@ -23,7 +23,7 @@
                     </div>
                     <input type="text"
                            class="form-control"
-                           placeholder="Invoice No."
+                           placeholder=""
                            aria-label="Invoice Number"
                            aria-describedby="basic-addon1"
                            v-model="invoiceNumber">
@@ -36,7 +36,7 @@
                     </div>
                     <input type="number"
                            class="form-control"
-                           placeholder="County Tax"
+                           placeholder=""
                            aria-label="County Tax"
                            aria-describedby="basic-addon1"
                            v-model="countyTax">
@@ -49,7 +49,7 @@
                     </div>
                     <input type="number"
                            class="form-control"
-                           placeholder="Invoice Subtotal"
+                           placeholder=""
                            aria-label="Invoice Subtotal"
                            aria-describedby="basic-addon1"
                            v-model="subtotalOnInvoice">
@@ -62,7 +62,7 @@
                     </div>
                     <input type="number"
                            class="form-control"
-                           placeholder="Invoice Total"
+                           placeholder=""
                            aria-label="Invoice Total"
                            aria-describedby="basic-addon1"
                            v-model="invoiceTotal">
@@ -196,7 +196,12 @@
 
         .navbar
             height: 100vh
+            padding: 0px
 
         .form-control
             margin-right: 10px
+
+        .form-inline
+            .input-group
+                width: 100%
 </style>

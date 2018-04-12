@@ -1,6 +1,6 @@
 <template>
       <div class="card">
-          <button @click="removeEntry">x</button>
+          <button class="remove" @click="removeEntry">x</button>
         <div class="card-body">
           <div class="row">
             <div class="col-6">
