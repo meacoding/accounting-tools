@@ -1,6 +1,10 @@
 <template>
     <div class="global">
-        <div class="threeDText">Accounting Things</div>
+        <div class="threeDText">
+            <div class="box">
+                #AccountingThings
+            </div>
+        </div>
         <nav class="navbar navbar-light bg-light">
 
             <form class="form-inline">
@@ -74,9 +78,11 @@
                 </div>
 
             </form>
+            <div class="bottomElement">
+                Tax Accrual: {{numberWithCommasAndDollarSign(taxAccrual)}} <br>
+                Material Adjustment: {{numberWithCommasAndDollarSign(materialAdjustment)}}
+            </div>
 
-            Tax Accrual: {{numberWithCommasAndDollarSign(taxAccrual)}} <br>
-            Material Adjustment: {{numberWithCommasAndDollarSign(materialAdjustment)}}
         </nav>
     </div>
 </template>
@@ -196,6 +202,10 @@
 </script>
 
 <style lang="sass">
+    @media screen and (min-width: 1155px)
+        .threeDText
+            font-size: 18pt !important
+
     .global
         position: fixed
         width: 25%
@@ -203,11 +213,16 @@
         top: 0
         left: 0
 
+        .box
+            border: 1px solid white
+            padding: 20px
+
         .threeDText
+            border-bottom: 1px solid white
             padding: 20px
             font: bold 100px/1 "Helvetica Neue", Helvetica, Arial, sans-serif
             text-align: center
-            font-size: 21pt
+            font-size: 13pt
             background-color: transparent
             color: white
             background-color: #2989D8
@@ -226,12 +241,33 @@
 
         .navbar
             height: 100vh
-            padding: 0px
-            background: rgb(255,255,255)
-            background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(221,242,255,1) 100%)
-            background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(221,242,255,1) 100%)
-            background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(221,242,255,1) 100%)
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ddf2ff',GradientType=0 )
+            padding: 20px
+            background: rgb(17,169,226)
+            background: -moz-linear-gradient(top, rgba(17,169,226,1) 0%, rgba(41,137,216,1) 100%)
+            background: -webkit-linear-gradient(top, rgba(17,169,226,1) 0%,rgba(41,137,216,1) 100%)
+            background: linear-gradient(to bottom, rgba(17,169,226,1) 0%,rgba(41,137,216,1) 100%)
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#11a9e2', endColorstr='#2989d8',GradientType=0 )
+
+            .bottomElement
+                padding: 10px
+                background-color: white
+                width: 19%
+                border-radius: 6px
+                position: fixed
+                bottom: 25px
+                left: 3%
+                box-shadow: 0 1px 0 #ccc,
+                0 2px 0 #c9c9c9,
+                0 3px 0 #bbb,
+                0 4px 0 #b9b9b9,
+                0 5px 0 #aaa,
+                0 6px 1px rgba(0,0,0,.1),
+                0 0 5px rgba(0,0,0,.1),
+                0 1px 3px rgba(0,0,0,.3),
+                0 3px 5px rgba(0,0,0,.2),
+                0 5px 10px rgba(0,0,0,.25),
+                0 10px 10px rgba(0,0,0,.2),
+                0 20px 20px rgba(0,0,0,.15)
         .form-control
             margin-right: 10px
 
