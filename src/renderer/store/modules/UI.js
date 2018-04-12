@@ -3,8 +3,8 @@ const state = {
     vendor: '',
     invoiceDate: '',
     invoiceNumber: '',
-    subtotalOnInvoice: '',
-    invoiceTotal: '',
+    subtotalOnInvoice: 0,
+    invoiceTotal: 0,
     countyTax: 0.01
   },
   entries: [
@@ -12,7 +12,7 @@ const state = {
       quantity: 0,
       price: 0,
       total: 0,
-      subtotal: 0,
+      subTotal: 0,
       totalTax: 0
     }
   ]

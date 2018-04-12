@@ -10,6 +10,7 @@
                         <span class="input-group-text">Item Quantity</span>
                     </div>
                     <input type="number"
+                           @focus="$event.target.select()"
                            class="form-control"
                            placeholder="Quantity"
                            aria-label="Quantity"
@@ -22,6 +23,7 @@
                         <span class="input-group-text">Item Price</span>
                     </div>
                     <input type="number"
+                           @focus="$event.target.select()"
                            class="form-control"
                            placeholder="Price"
                            aria-label="Price"

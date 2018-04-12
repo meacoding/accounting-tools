@@ -1,7 +1,7 @@
 <template>
     <div class="global">
+        <div class="threeDText">Accounting Things</div>
         <nav class="navbar navbar-light bg-light">
-
 
             <form class="form-inline">
 
@@ -10,6 +10,7 @@
                         <span class="input-group-text" id="inputGroup-sizing-sm">Vendor</span>
                     </div>
                     <input type="text"
+                           @focus="$event.target.select()"
                            class="form-control"
                            placeholder=""
                            aria-label="Vendor"
@@ -22,6 +23,7 @@
                         <span class="input-group-text" id="inputGroup-sizing-sm">Invoice No.</span>
                     </div>
                     <input type="text"
+                           @focus="$event.target.select()"
                            class="form-control"
                            placeholder=""
                            aria-label="Invoice Number"
@@ -35,6 +37,7 @@
                         <span class="input-group-text" id="inputGroup-sizing-sm">County Tax %</span>
                     </div>
                     <input type="number"
+                           @focus="$event.target.select()"
                            class="form-control"
                            placeholder=""
                            aria-label="County Tax"
@@ -48,6 +51,7 @@
                         <span class="input-group-text" id="inputGroup-sizing-sm">Invoice Subtotal</span>
                     </div>
                     <input type="number"
+                           @focus="$event.target.select()"
                            class="form-control"
                            placeholder=""
                            aria-label="Invoice Subtotal"
@@ -61,6 +65,7 @@
                         <span class="input-group-text" id="inputGroup-sizing-sm">Invoice Total</span>
                     </div>
                     <input type="number"
+                           @focus="$event.target.select()"
                            class="form-control"
                            placeholder=""
                            aria-label="Invoice Total"
@@ -87,9 +92,13 @@
       },
       computed: {
         materialAdjustment () {
-          return Math.abs((Number(this.cardTotal - this.cardSubTotal * (1.06 + Number(this.countyTax)))).toFixed(2))
+          console.log('this.cardTotal', this.cardTotal)
+          console.log('this.cardSubTotal', this.cardSubTotal)
+          console.log('this.countyTax', this.countyTax)
+          return Math.abs((Number(this.cardTotal - (this.cardSubTotal * (1.06 + Number(this.countyTax))))).toFixed(2))
         },
         cardSubTotal () {
+          console.log('entry', this.$store.state.UI.entries)
           let cardSubTotal = 0
           this.$store.state.UI.entries.forEach(entry => {
             if (!entry.subTotal) return
@@ -186,7 +195,7 @@
     }
 </script>
 
-<style lang='sass'>
+<style lang="sass">
     .global
         position: fixed
         width: 25%
@@ -194,10 +203,35 @@
         top: 0
         left: 0
 
+        .threeDText
+            padding: 20px
+            font: bold 100px/1 "Helvetica Neue", Helvetica, Arial, sans-serif
+            text-align: center
+            font-size: 21pt
+            background-color: transparent
+            color: white
+            background-color: #2989D8
+            text-shadow: 0 1px 0 #ccc,
+            0 2px 0 #c9c9c9,
+            0 3px 0 #bbb,
+            0 4px 0 #b9b9b9,
+            0 5px 0 #aaa,
+            0 6px 1px rgba(0,0,0,.1),
+            0 0 5px rgba(0,0,0,.1),
+            0 1px 3px rgba(0,0,0,.3),
+            0 3px 5px rgba(0,0,0,.2),
+            0 5px 10px rgba(0,0,0,.25),
+            0 10px 10px rgba(0,0,0,.2),
+            0 20px 20px rgba(0,0,0,.15)
+
         .navbar
             height: 100vh
             padding: 0px
-
+            background: rgb(255,255,255)
+            background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(221,242,255,1) 100%)
+            background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(221,242,255,1) 100%)
+            background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(221,242,255,1) 100%)
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ddf2ff',GradientType=0 )
         .form-control
             margin-right: 10px
 

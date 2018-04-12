@@ -50,7 +50,12 @@
             width: 75%
             margin-left: 25%
             float: left
-            background: url(/static/back.jpg) no-repeat center center fixed
+            background: rgb(17,169,226)
+            background: -moz-linear-gradient(top, rgba(17,169,226,1) 0%, rgba(41,137,216,1) 100%)
+            background: -webkit-linear-gradient(top, rgba(17,169,226,1) 0%,rgba(41,137,216,1) 100%)
+            background: linear-gradient(to bottom, rgba(17,169,226,1) 0%,rgba(41,137,216,1) 100%)
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#11a9e2', endColorstr='#2989d8',GradientType=0 )
+
             background-size: cover
 
             button.add
