@@ -7,7 +7,7 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Vendor</span>
                     </div>
                     <input type="text"
                            class="form-control"
@@ -19,7 +19,7 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Invoice No.</span>
                     </div>
                     <input type="text"
                            class="form-control"
@@ -32,7 +32,7 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+                        <span class="input-group-text" id="inputGroup-sizing-sm">County Tax %</span>
                     </div>
                     <input type="number"
                            class="form-control"
@@ -45,12 +45,12 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Invoice Subtotal</span>
                     </div>
                     <input type="number"
                            class="form-control"
-                           placeholder="Subtotal on Invoice"
-                           aria-label="Subtotal on Invoice"
+                           placeholder="Invoice Subtotal"
+                           aria-label="Invoice Subtotal"
                            aria-describedby="basic-addon1"
                            v-model="subtotalOnInvoice">
 
@@ -58,7 +58,7 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Invoice Total</span>
                     </div>
                     <input type="number"
                            class="form-control"
@@ -95,7 +95,6 @@
             if (!entry.subTotal) return
             cardSubTotal = cardSubTotal + Number(entry.subTotal)
           })
-          console.log('cardSubTotal', cardSubTotal)
           return cardSubTotal
         },
         cardTotal () {
@@ -104,7 +103,6 @@
             if (!entry.total) return
             cardTotal = cardTotal + Number(entry.total)
           })
-          console.log('cardTotal', cardTotal)
           return cardTotal
         },
         taxAccrual () {

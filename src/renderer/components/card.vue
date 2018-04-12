@@ -4,18 +4,18 @@
         <div class="card-body">
           <div class="row">
             <div class="col-6">
-                 <input type="number"
-                    class="form-control" 
-                    placeholder="Quantity" 
-                    aria-label="Quantity" 
-                    aria-describedby="basic-addon1"
-                    v-model="card.quantity">
-                     <input type="number"
-                    class="form-control" 
-                    placeholder="Price" 
-                    aria-label="Price" 
-                    aria-describedby="basic-addon1"
-                    v-model="card.price">
+              <input type="number"
+                class="form-control" 
+                placeholder="Quantity" 
+                aria-label="Quantity" 
+                aria-describedby="basic-addon1"
+                v-model="card.quantity">
+              <input type="number"
+                class="form-control" 
+                placeholder="Price" 
+                aria-label="Price" 
+                aria-describedby="basic-addon1"
+                v-model="card.price">
             </div>
 
             <div class="col-6">
