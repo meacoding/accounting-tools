@@ -7,7 +7,7 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">Vendor</span>
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
                     </div>
                     <input type="text"
                            class="form-control"
@@ -19,7 +19,7 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">Invoice</span>
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
                     </div>
                     <input type="text"
                            class="form-control"
@@ -32,7 +32,7 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">County Tax</span>
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
                     </div>
                     <input type="number"
                            class="form-control"
@@ -45,7 +45,7 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">Subtotal</span>
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
                     </div>
                     <input type="number"
                            class="form-control"
@@ -58,7 +58,7 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">Total</span>
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
                     </div>
                     <input type="number"
                            class="form-control"
@@ -70,18 +70,8 @@
 
             </form>
 
-            <div class="result">
-                Tax Accrual:
-                <span :class="{'green': taxAccrual.unformated > 0, 'red': taxAccrual.unformated < 0}">
-                    {{numberWithCommasAndDollarSign(taxAccrual.formated)}}
-                </span>
-            </div>
-            <div class="result">
-                Material Adjustment:
-                <span :class="{'green': materialAdjustment.unformated > 0, 'red': materialAdjustment.unformated < 0}" >
-                    {{numberWithCommasAndDollarSign(materialAdjustment.formated)}}
-                </span>
-            </div>
+            Tax Accrual: {{numberWithCommasAndDollarSign(taxAccrual)}} <br>
+            Material Adjustment: {{numberWithCommasAndDollarSign(materialAdjustment)}}
         </nav>
     </div>
 </template>
@@ -97,28 +87,16 @@
       },
       computed: {
         materialAdjustment () {
-          if (!this.cardTotal || !this.cardSubTotal || !this.countyTax) return {unformated: 0, formated: '0.00'}
-          let adjustment = {
-            unformated: (this.cardTotal - (this.cardSubTotal * (0.06 + Number(this.countyTax)))),
-            formated: Math.abs(this.cardTotal - (this.cardSubTotal * (0.06 + Number(this.countyTax)))).toFixed(2)
-          }
-          return adjustment
-        },
-        cardTotalTax  () {
-          let totalTax = 0
-          this.$store.state.UI.entries.forEach(entry => {
-            if (!entry.totalTax) return
-            totalTax = totalTax + Number(entry.totalTax)
-          })
-          return totalTax
+          return Math.abs((Number(this.cardTotal - this.cardSubTotal * (1.06 + Number(this.countyTax)))).toFixed(2))
         },
         cardSubTotal () {
-          let subTotal = 0
+          let cardSubTotal = 0
           this.$store.state.UI.entries.forEach(entry => {
             if (!entry.subTotal) return
-            subTotal = subTotal + Number(entry.subTotal)
+            cardSubTotal = cardSubTotal + Number(entry.subTotal)
           })
-          return subTotal
+          console.log('cardSubTotal', cardSubTotal)
+          return cardSubTotal
         },
         cardTotal () {
           let cardTotal = 0
@@ -126,15 +104,13 @@
             if (!entry.total) return
             cardTotal = cardTotal + Number(entry.total)
           })
+          console.log('cardTotal', cardTotal)
           return cardTotal
         },
         taxAccrual () {
-          if (!this.cardTotal || !this.invoiceTotal) return {unformated: 0, formated: '0.00'}
-          let accrual = {
-            unformated: Number(this.invoiceTotal) - Number(this.cardTotal),
-            formated: Math.abs((Number(this.invoiceTotal) - Number(this.cardTotal))).toFixed(2)
-          }
-          return accrual
+          return Math.abs((Number(this.$store.state.UI.globalVariables.invoiceTotal) - Number(this.cardTotal))).toFixed(2)
+          // need to make negatives have () around them like (4.96) for -4.96.
+          // need to make positive green and negative red
         },
         countyTax: {
           get () {
@@ -220,17 +196,8 @@
         top: 0
         left: 0
 
-        .green
-            color: green
-        .red
-            color: red
-        span.input-group-text
-            width: 100px
-
         .navbar
             height: 100vh
-            display: block
-            border-right: 1px solid lightblue
 
         .form-control
             margin-right: 10px
