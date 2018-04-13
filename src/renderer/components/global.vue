@@ -80,7 +80,7 @@
             </form>
             <div class="bottomElement">
                 Tax Accrual: {{numberWithCommasAndDollarSign(taxAccrual)}} <br>
-                Material Adjustment: {{numberWithCommasAndDollarSign(materialAdjustment)}}
+                Mat'l ADJ: {{numberWithCommasAndDollarSign(materialAdjustment)}}
             </div>
 
         </nav>
@@ -92,15 +92,15 @@
       name: 'global',
       methods: {
         numberWithCommasAndDollarSign (x) {
-          if (!x) return
+          if (!x) return '$0.00'
           return '$' + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
         }
       },
       computed: {
         materialAdjustment () {
-          console.log('this.cardTotal', this.cardTotal)
-          console.log('this.cardSubTotal', this.cardSubTotal)
-          console.log('this.countyTax', this.countyTax)
+          console.log('cardTotal', this.cardTotal)
+          console.log('cardSubTotal', this.cardSubTotal)
+          console.log('countyTax', this.countyTax)
           return Math.abs((Number(this.cardTotal - (this.cardSubTotal * (1.06 + Number(this.countyTax))))).toFixed(2))
         },
         cardSubTotal () {
