@@ -1,5 +1,5 @@
 {
-  "name": "taxv2",
+  "name": "Tax Accrual",
   "version": "0.0.0",
   "author": "Amanda Harness <16675876+meacoding@users.noreply.github.com>",
   "description": "An electron-vue project",
@@ -19,7 +19,7 @@
     "postinstall": "npm run lint:fix"
   },
   "build": {
-    "productName": "taxv2",
+    "productName": "Tax Accrual",
     "appId": "org.simulatedgreg.electron-vue",
     "directories": {
       "output": "build"

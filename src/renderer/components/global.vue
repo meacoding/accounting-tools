@@ -80,7 +80,7 @@
             </form>
             <div class="bottomElement">
                 Tax Accrual: {{numberWithCommasAndDollarSign(taxAccrual)}} <br>
-                Material Adjustment: {{numberWithCommasAndDollarSign(materialAdjustment)}}
+                Mat'l ADJ: {{numberWithCommasAndDollarSign(materialAdjustment)}}
             </div>
 
         </nav>
