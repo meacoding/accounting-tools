@@ -92,7 +92,7 @@
       name: 'global',
       methods: {
         numberWithCommasAndDollarSign (x) {
-          if (!x) return
+          if (!x) return '$0.00'
           return '$' + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
         }
       },
@@ -101,7 +101,7 @@
           console.log('this.cardTotal', this.cardTotal)
           console.log('this.cardSubTotal', this.cardSubTotal)
           console.log('this.countyTax', this.countyTax)
-          return Math.abs((Number(this.cardTotal - (this.cardSubTotal * (1.06 + Number(this.countyTax))))).toFixed(2))
+          return Math.abs((Number(this.cardTotal - (this.cardSubTotal * (1.06 + Number(this.countyTax)))))).toFixed(2)
         },
         cardSubTotal () {
           console.log('entry', this.$store.state.UI.entries)
@@ -272,6 +272,9 @@
             margin-right: 10px
 
         .form-inline
+            top: 30px
+            position: absolute
+
             .input-group
                 width: 100%
 </style>
