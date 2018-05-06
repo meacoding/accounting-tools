@@ -16,9 +16,12 @@
 <script>
   import global from './global'
   import card from './card'
+  import { focus } from 'vue-focus'
   export default {
     name: 'mainView',
+    // directives: { focus },
     components: {
+      focus,
       global,
       card
     },

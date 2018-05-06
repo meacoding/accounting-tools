@@ -2,10 +2,10 @@
     <div class="global">
         <div class="threeDText">
             <div class="box">
-                #AccountingThings
+                Accounting Tools
             </div>
         </div>
-        <nav class="navbar navbar-light bg-light">
+        <nav id="enterKey" class="navbar navbar-light bg-light">
 
             <form class="form-inline">
 
@@ -19,7 +19,9 @@
                            placeholder=""
                            aria-label="Vendor"
                            aria-describedby="basic-addon1"
-                           v-model="vendor">
+                           v-model="vendor"
+                           focus="focused['0']" 
+                           v-on:keyup.enter="changeFocus(1, 0)">
                 </div>
 
                 <div class="input-group input-group-sm mb-3">
@@ -32,13 +34,15 @@
                            placeholder=""
                            aria-label="Invoice Number"
                            aria-describedby="basic-addon1"
-                           v-model="invoiceNumber">
+                           v-model="invoiceNumber"
+                           focus="focused['1']" 
+                           v-on:keyup.enter="changeFocus(2, 1)">
 
                 </div>
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-sm">County Tax %</span>
+                        <span class="input-group-text" id="inputGroup-sizing-sm">FL County Tax %</span>
                     </div>
                     <input type="number"
                            @focus="$event.target.select()"
@@ -46,7 +50,9 @@
                            placeholder=""
                            aria-label="County Tax"
                            aria-describedby="basic-addon1"
-                           v-model="countyTax">
+                           v-model="countyTax"
+                           focus="focused['2']" 
+                           v-on:keyup.enter="changeFocus(3, 2)">
 
                 </div>
 
@@ -60,7 +66,9 @@
                            placeholder=""
                            aria-label="Invoice Subtotal"
                            aria-describedby="basic-addon1"
-                           v-model="subtotalOnInvoice">
+                           v-model="subtotalOnInvoice"
+                           focus="focused['3']" 
+                           v-on:keyup.enter="changeFocus(4, 3)">
 
                 </div>
 
@@ -74,13 +82,16 @@
                            placeholder=""
                            aria-label="Invoice Total"
                            aria-describedby="basic-addon1"
-                           v-model="invoiceTotal">
+                           v-model="invoiceTotal"
+                           focus="focused['4']" 
+                           v-on:keyup.enter="changeFocus(0, 4)">
                 </div>
 
             </form>
             <div class="bottomElement">
-                Tax Accrual: {{numberWithCommasAndDollarSign(taxAccrual)}} <br>
-                Mat'l ADJ: {{numberWithCommasAndDollarSign(materialAdjustment)}}
+                Tax Accrual: <span :class="{red:taxAccrual<0, green:taxAccrual>0}">{{numberWithCommasAndDollarSign(taxAccrual)}}</span> <br>
+                Mat'l ADJ: <span :class="{red:materialAdjustment<0, red:materialAdjustment>0}">{{numberWithCommasAndDollarSign(materialAdjustment)}}</span>
+
             </div>
 
         </nav>
@@ -90,21 +101,37 @@
 <script>
     export default {
       name: 'global',
+      data () {
+        return {
+          focused: {
+            '0': false,
+            '1': false,
+            '2': false,
+            '3': false,
+            '4': false
+          }
+        }
+      },
       methods: {
         numberWithCommasAndDollarSign (x) {
           if (!x) return '$0.00'
           return '$' + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+        },
+        changeFocus (bringInFocus, removeFocus) {
+          console.log('hi')
+          if (bringInFocus) this.focused[bringInFocus] = true
+          this.focused[removeFocus] = false
+          console.log('bye')
         }
       },
       computed: {
+        taxAccrual () {
+          return (Number(this.$store.state.UI.globalVariables.invoiceTotal) - Number(this.cardTotal)).toFixed(2)
+        },
         materialAdjustment () {
-          console.log('this.cardTotal', this.cardTotal)
-          console.log('this.cardSubTotal', this.cardSubTotal)
-          console.log('this.countyTax', this.countyTax)
-          return Math.abs((Number(this.cardTotal - (this.cardSubTotal * (1.06 + Number(this.countyTax)))))).toFixed(2)
+          return (Number(this.cardTotal - (this.cardSubTotal * (1.06 + Number(this.countyTax))))).toFixed(2)
         },
         cardSubTotal () {
-          console.log('entry', this.$store.state.UI.entries)
           let cardSubTotal = 0
           this.$store.state.UI.entries.forEach(entry => {
             if (!entry.subTotal) return
@@ -119,11 +146,6 @@
             cardTotal = cardTotal + Number(entry.total)
           })
           return cardTotal
-        },
-        taxAccrual () {
-          return Math.abs((Number(this.$store.state.UI.globalVariables.invoiceTotal) - Number(this.cardTotal))).toFixed(2)
-          // need to make negatives have () around them like (4.96) for -4.96.
-          // need to make positive green and negative red
         },
         countyTax: {
           get () {
@@ -214,7 +236,7 @@
         left: 0
 
         .box
-            border: 1px solid white
+            // border: 1px solid white
             padding: 20px
 
         .threeDText
@@ -223,21 +245,21 @@
             font: bold 100px/1 "Helvetica Neue", Helvetica, Arial, sans-serif
             text-align: center
             font-size: 13pt
-            background-color: transparent
+            background-color: #11a9e2
             color: white
-            background-color: #2989D8
-            text-shadow: 0 1px 0 #ccc,
-            0 2px 0 #c9c9c9,
-            0 3px 0 #bbb,
-            0 4px 0 #b9b9b9,
-            0 5px 0 #aaa,
-            0 6px 1px rgba(0,0,0,.1),
-            0 0 5px rgba(0,0,0,.1),
-            0 1px 3px rgba(0,0,0,.3),
-            0 3px 5px rgba(0,0,0,.2),
-            0 5px 10px rgba(0,0,0,.25),
-            0 10px 10px rgba(0,0,0,.2),
-            0 20px 20px rgba(0,0,0,.15)
+            // background-color: #2989D8
+            // text-shadow: 0 1px 0 #ccc,
+            // 0 2px 0 #c9c9c9,
+            // 0 3px 0 #bbb,
+            // 0 4px 0 #b9b9b9,
+            // 0 5px 0 #aaa,
+            // 0 6px 1px rgba(0,0,0,.1),
+            // 0 0 5px rgba(0,0,0,.1),
+            // 0 1px 3px rgba(0,0,0,.3),
+            // 0 3px 5px rgba(0,0,0,.2),
+            // 0 5px 10px rgba(0,0,0,.25),
+            // 0 10px 10px rgba(0,0,0,.2),
+            // 0 20px 20px rgba(0,0,0,.15)
 
         .navbar
             height: 100vh
@@ -268,6 +290,13 @@
                 0 5px 10px rgba(0,0,0,.25),
                 0 10px 10px rgba(0,0,0,.2),
                 0 20px 20px rgba(0,0,0,.15)
+
+        .green
+            color: green
+
+        .red
+            color: red
+
         .form-control
             margin-right: 10px
 
