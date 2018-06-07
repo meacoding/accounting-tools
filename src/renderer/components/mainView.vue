@@ -1,5 +1,6 @@
 <template>
   <div id="wrapper">
+    <span @click="print" class="printBtn">Print</span>
     <global></global>
     <div class="content">
 
@@ -12,11 +13,13 @@
     </div>
   </div>
 </template>
-
 <script>
   import global from './global'
   import card from './card'
   import { focus } from 'vue-focus'
+  import { remote } from 'electron'
+  import path from 'path'
+  import fs from 'fs'
   export default {
     name: 'mainView',
     // directives: { focus },
@@ -28,6 +31,17 @@
     methods: {
       addEntry () {
         this.$store.commit('addEntry')
+      },
+      print () {
+        let win = remote.getCurrentWindow()
+        let documentsDir = path.join(remote.app.getPath('pictures'), 'screenshot.pdf')
+        win.webContents.printToPDF({}, (error, data) => {
+          if (error) throw error
+          fs.writeFile(documentsDir, data, (error) => {
+            if (error) throw error
+            console.log('Write PDF successfully.')
+          })
+        })
       }
     },
     mounted () {
@@ -55,6 +69,10 @@
         height: 100vh
         width: 100%
         position: fixed
+
+        .printBtn
+          z-index: 9
+          position: fixed
 
         .content
             height: 100vh
