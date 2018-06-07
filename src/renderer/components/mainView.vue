@@ -27,6 +27,15 @@
         this.$store.commit('addEntry')
       }
     },
+    mounted () {
+      let myNumber = 42
+
+      if (myNumber) {
+        let myNumber = 0
+        console.log(myNumber)
+      }
+      console.log(myNumber)
+    },
     computed: {
       vendor () {
         return this.$store.state.UI.globalVariables.vendor
