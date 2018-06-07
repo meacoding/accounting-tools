@@ -60,8 +60,8 @@ export default {
   },
   computed: {
     total () {
-      if (!this.totalTax || !this.subTotal) return
-      let total = (Number(this.totalTax) + Number(this.subTotal)).toFixed(2)
+      if (!this.card.totalTax || !this.card.subTotal) return
+      let total = (Number(this.card.totalTax) + Number(this.card.subTotal)).toFixed(2)
       let obj = {
         index: this.index,
         total
@@ -71,7 +71,7 @@ export default {
     },
     subTotal () {
       if (!this.card.price || !this.card.quantity) return
-      let subTotal = (this.card.price * this.card.quantity).toFixed(2)
+      let subTotal = (Number(this.card.price * this.card.quantity)).toFixed(2)
       let obj = {
         index: this.index,
         subTotal

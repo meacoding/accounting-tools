@@ -24,7 +24,7 @@ const mutations = {
       quantity: 0,
       price: 0,
       total: 0,
-      subtotal: 0,
+      subTotal: 0,
       totalTax: 0
     })
   },

@@ -129,15 +129,9 @@
           return (Number(this.$store.state.UI.globalVariables.invoiceTotal) - Number(this.cardTotal)).toFixed(2)
         },
         materialAdjustment () {
+          console.log('cardTotal', this.cardTotal)
+          console.log('cardSubtotal', this.cardSubTotal)
           return (Number(this.cardTotal - (this.cardSubTotal * (1.06 + Number(this.countyTax))))).toFixed(2)
-        },
-        cardSubTotal () {
-          let cardSubTotal = 0
-          this.$store.state.UI.entries.forEach(entry => {
-            if (!entry.subTotal) return
-            cardSubTotal = cardSubTotal + Number(entry.subTotal)
-          })
-          return cardSubTotal
         },
         cardTotal () {
           let cardTotal = 0
@@ -146,6 +140,14 @@
             cardTotal = cardTotal + Number(entry.total)
           })
           return cardTotal
+        },
+        cardSubTotal () {
+          let cardSubTotal = 0
+          this.$store.state.UI.entries.forEach(entry => {
+            if (!entry.subTotal) return
+            cardSubTotal = cardSubTotal + Number(entry.subTotal)
+          })
+          return cardSubTotal
         },
         countyTax: {
           get () {
