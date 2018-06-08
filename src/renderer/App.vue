@@ -1,12 +1,29 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <button @click="setTab('taxAccrual')">Tax Accrual</button>
+    <button @click="setTab('partialUnits')">Partial Units</button>
+
+    <tax-accrual v-show="tabState === 'taxAccrual'"></tax-accrual>
+    <partial-units v-show="tabState === 'partialUnits'"></partial-units>
   </div>
 </template>
 
 <script>
+  import TaxAccrual from './components/taxAccrual/taxAccrual'
+  import PartialUnits from './components/partialUnits/partialUnits'
   export default {
-    name: 'AccountingTools'
+    name: 'AccountingTools',
+    components: {PartialUnits, TaxAccrual},
+    data () {
+      return {
+        tabState: 'taxAccrual'
+      }
+    },
+    methods: {
+      setTab (tab) {
+        this.tabState = tab
+      }
+    }
   }
 </script>
 

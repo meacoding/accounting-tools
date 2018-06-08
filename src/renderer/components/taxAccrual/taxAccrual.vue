@@ -20,8 +20,9 @@
   import { remote } from 'electron'
   import path from 'path'
   import fs from 'fs'
+
   export default {
-    name: 'mainView',
+    name: 'TaxAccrual',
     // directives: { focus },
     components: {
       focus,
@@ -34,10 +35,10 @@
       },
       print () {
         let win = remote.getCurrentWindow()
-        let documentsDir = path.join(remote.app.getPath('pictures'), 'screenshot.pdf')
+        let picturesDir = path.join(remote.app.getPath('pictures'), 'screenshot.pdf')
         win.webContents.printToPDF({}, (error, data) => {
           if (error) throw error
-          fs.writeFile(documentsDir, data, (error) => {
+          fs.writeFile(picturesDir, data, (error) => {
             if (error) throw error
             console.log('Write PDF successfully.')
           })

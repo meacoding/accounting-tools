@@ -5,9 +5,9 @@
                 Accounting Tools
             </div>
         </div>
-        <nav id="enterKey" class="navbar navbar-light bg-light">
+        <div id="enterKey">
 
-            <form class="form-inline">
+            <form>
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
@@ -94,7 +94,7 @@
 
             </div>
 
-        </nav>
+        </div>
     </div>
 </template>
 
@@ -230,11 +230,14 @@
         .threeDText
             font-size: 18pt !important
 
+    .printBtn
+        z-index: 9
+        position: fixed
     .global
         position: fixed
         width: 25%
-        height: 100vh
-        top: 0
+        height: calc(100vh - 50px)
+        top: 50px
         left: 0
 
         .box
