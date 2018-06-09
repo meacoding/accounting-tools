@@ -3,8 +3,9 @@
     
   <div class="btn-group btn-group-toggle" data-toggle="buttons">
     <label class="btn btn-secondary active">
-      <input type="radio" 
-              @click="setTab('taxAccrual')"
+      <input  type="radio"
+              v-model="tabState"
+              value="taxAccrual"
               name="options" 
               id="option1" 
               autocomplete="off" 
@@ -12,8 +13,9 @@
               Tax Accrual
     </label>
     <label class="btn btn-secondary">
-      <input type="radio" 
-              @click="setTab('partialUnits')"
+      <input type="radio"
+              v-model="tabState"
+              value="partialUnits"
               name="options" 
               id="option"
               autocomplete="off">
@@ -46,9 +48,6 @@
       setTab (tab) {
         this.tabState = tab
       },
-      // toggleRadio () {
-      //   $(this).button('toggle')
-      // },
       print () {
         let win = remote.getCurrentWindow()
         let picturesDir = path.join(remote.app.getPath('pictures'), 'screenshot.pdf')

@@ -30,15 +30,6 @@
         this.$store.commit('addEntry')
       }
     },
-    // mounted () {
-    //   let myNumber = 42
-
-    //   if (myNumber) {
-    //     let myNumber = 0
-    //     console.log(myNumber)
-    //   }
-    //   console.log(myNumber)
-    // },
     computed: {
       vendor () {
         return this.$store.state.UI.globalVariables.vendor
@@ -62,11 +53,6 @@
             width: 72%
             margin-left: 28%
             float: left
-            background: rgb(255,255,255)
-            background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(221,242,255,1) 100%)
-            background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(221,242,255,1) 100%)
-            background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(221,242,255,1) 100%)
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ddf2ff',GradientType=0 )
             background-size: cover
 
             button.add
