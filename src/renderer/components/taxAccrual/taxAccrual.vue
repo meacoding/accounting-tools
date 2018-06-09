@@ -1,6 +1,5 @@
 <template>
   <div id="wrapper">
-    <span @click="print" class="printBtn">Print</span>
     <global></global>
     <div class="content">
 
@@ -17,9 +16,6 @@
   import global from './global'
   import card from './card'
   import { focus } from 'vue-focus'
-  import { remote } from 'electron'
-  import path from 'path'
-  import fs from 'fs'
 
   export default {
     name: 'TaxAccrual',
@@ -32,28 +28,17 @@
     methods: {
       addEntry () {
         this.$store.commit('addEntry')
-      },
-      print () {
-        let win = remote.getCurrentWindow()
-        let picturesDir = path.join(remote.app.getPath('pictures'), 'screenshot.pdf')
-        win.webContents.printToPDF({}, (error, data) => {
-          if (error) throw error
-          fs.writeFile(picturesDir, data, (error) => {
-            if (error) throw error
-            console.log('Write PDF successfully.')
-          })
-        })
       }
     },
-    mounted () {
-      let myNumber = 42
+    // mounted () {
+    //   let myNumber = 42
 
-      if (myNumber) {
-        let myNumber = 0
-        console.log(myNumber)
-      }
-      console.log(myNumber)
-    },
+    //   if (myNumber) {
+    //     let myNumber = 0
+    //     console.log(myNumber)
+    //   }
+    //   console.log(myNumber)
+    // },
     computed: {
       vendor () {
         return this.$store.state.UI.globalVariables.vendor
@@ -71,15 +56,11 @@
         width: 100%
         position: fixed
 
-        .printBtn
-          z-index: 9
-          position: fixed
-
         .content
             height: 100vh
             overflow-y: auto
-            width: 75%
-            margin-left: 25%
+            width: 72%
+            margin-left: 28%
             float: left
             background: rgb(255,255,255)
             background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(221,242,255,1) 100%)

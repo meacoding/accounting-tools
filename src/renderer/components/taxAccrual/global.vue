@@ -2,7 +2,7 @@
     <div class="global">
         <div class="threeDText">
             <div class="box">
-                Accounting Tools
+                Tax Accrual
             </div>
         </div>
         <div id="enterKey">
@@ -11,7 +11,7 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-sm">Vendor</span>
+                        <span class="input-group-text inputWidth" id="inputGroup-sizing-sm">Vendor</span>
                     </div>
                     <input type="text"
                            @focus="$event.target.select()"
@@ -26,7 +26,7 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-sm">Invoice No.</span>
+                        <span class="input-group-text inputWidth" id="inputGroup-sizing-sm">Invoice No.</span>
                     </div>
                     <input type="text"
                            @focus="$event.target.select()"
@@ -42,7 +42,7 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-sm">FL County Tax %</span>
+                        <span class="input-group-text inputWidth" id="inputGroup-sizing-sm">FL County Tax %</span>
                     </div>
                     <input type="number"
                            @focus="$event.target.select()"
@@ -58,7 +58,7 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-sm">Invoice Subtotal</span>
+                        <span class="input-group-text inputWidth" id="inputGroup-sizing-sm">Invoice Subtotal</span>
                     </div>
                     <input type="number"
                            @focus="$event.target.select()"
@@ -74,7 +74,7 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-sm">Invoice Total</span>
+                        <span class="input-group-text inputWidth" id="inputGroup-sizing-sm">Invoice Total</span>
                     </div>
                     <input type="number"
                            @focus="$event.target.select()"
@@ -130,7 +130,7 @@
         },
         materialAdjustment () {
           console.log('cardTotal', this.cardTotal)
-          console.log('cardSubtotal', this.cardSubTotal)
+          console.log('cardSubTotal', this.cardSubTotal)
           return (Number(this.cardTotal - (this.cardSubTotal * (1.06 + Number(this.countyTax))))).toFixed(2)
         },
         cardTotal () {
@@ -230,13 +230,10 @@
         .threeDText
             font-size: 18pt !important
 
-    .printBtn
-        z-index: 9
-        position: fixed
     .global
         position: fixed
-        width: 25%
-        height: calc(100vh - 50px)
+        width: 28%
+        height: calc(100vh - 75px)
         top: 50px
         left: 0
 
@@ -295,6 +292,9 @@
                 0 5px 10px rgba(0,0,0,.25),
                 0 10px 10px rgba(0,0,0,.2),
                 0 20px 20px rgba(0,0,0,.15)
+
+        .inputWidth
+            width: 125px
 
         .green
             color: green

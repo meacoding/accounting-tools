@@ -7,7 +7,7 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">Item Quantity</span>
+                        <span class="input-group-text inputWidth">Item Quantity</span>
                     </div>
                     <input type="number"
                            @focus="$event.target.select()"
@@ -20,7 +20,7 @@
                 </div>
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">Item Price</span>
+                        <span class="input-group-text inputWidth">Item Price</span>
                     </div>
                     <input type="number"
                            @focus="$event.target.select()"
@@ -152,4 +152,7 @@ export default {
 
                 &:focus
                     outline: none
+                  
+        .inputWidth
+            width: 125px
 </style>
