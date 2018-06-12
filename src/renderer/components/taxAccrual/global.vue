@@ -1,10 +1,5 @@
 <template>
     <div class="global">
-        <div class="threeDText">
-            <div class="box">
-                Tax Accrual
-            </div>
-        </div>
         <div id="enterKey">
 
             <form>
@@ -231,11 +226,17 @@
             font-size: 18pt !important
 
     .global
+        color: white
+        padding-top: 50px
         position: fixed
         width: 28%
-        height: calc(100vh - 75px)
-        top: 50px
+        padding-right: 10px
+        padding-left: 20px
+        height: calc(100vh - 39px)
+        bottom: 0
+        background-color: rgba(0, 74, 103, 0.3)
         left: 0
+        border-right: 1px solid #ced4da;
 
         .box
             // border: 1px solid white

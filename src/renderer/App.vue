@@ -1,29 +1,31 @@
 <template>
   <div id="app">
-    
-  <div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label class="btn btn-secondary active">
-      <input  type="radio"
-              v-model="tabState"
-              value="taxAccrual"
-              name="options" 
-              id="option1" 
-              autocomplete="off" 
-              checked> 
-              Tax Accrual
-    </label>
-    <label class="btn btn-secondary">
-      <input type="radio"
-              v-model="tabState"
-              value="partialUnits"
-              name="options" 
-              id="option"
-              autocomplete="off">
-              Partial Units
-    </label>
+  <div class="topBar">
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-secondary active">
+        <input  type="radio"
+                v-model="tabState"
+                value="taxAccrual"
+                name="options"
+                id="option1"
+                autocomplete="off"
+                checked>
+        Tax Accrual
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio"
+               v-model="tabState"
+               value="partialUnits"
+               name="options"
+               id="option"
+               autocomplete="off">
+        Partial Units
+      </label>
+    </div>
+
+    <button type="button" @click="print" class="btn btn-primary float-right">Print</button>
   </div>
 
-  <button type="button" @click="print" class="btn btn-primary float-right">Print</button>
 
     <tax-accrual v-show="tabState === 'taxAccrual'"></tax-accrual>
     <partial-units v-show="tabState === 'partialUnits'"></partial-units>
@@ -67,9 +69,22 @@
   html, body, #app
     width: 100%
     height: 100%
+    background: url(/static/back2.jpg) no-repeat center center fixed
+    background-size: cover
 
   input[type=number]::-webkit-inner-spin-button, 
   input[type=number]::-webkit-outer-spin-button  
     -webkit-appearance: none 
-    margin: 0 
+    margin: 0
+
+  .form-control
+    color: white
+    background-color: rgba(255,255,255,0.2)
+
+  .topBar
+    border-bottom: 1px solid #ced4da
+    background-color: rgba(0, 0, 0, 0.5)
+
+    .btn
+        border-radius: 0 !important
 </style>

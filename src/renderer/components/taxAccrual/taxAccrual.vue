@@ -2,11 +2,12 @@
   <div id="wrapper">
     <global></global>
     <div class="content">
-
-      <card :key="entryIndex" 
-      :index="entryIndex"
-      :entry="entry" 
-      v-for="(entry, entryIndex) in entries"></card>
+      <transition-group name="list-item" class="list__ul">
+        <card :key="entryIndex"
+        :index="entryIndex"
+        :entry="entry"
+        v-for="(entry, entryIndex) in entries"></card>
+      </transition-group>
 
       <button class="add" @click="addEntry">+</button>
     </div>
@@ -47,6 +48,28 @@
         width: 100%
         position: fixed
 
+        .list-item-enter-active, .list-item-leave-active
+            transition: opacity 0.3s, transform 0.3s
+            transform-origin: left center
+
+        .list-item-enter, .list-item-leave-to
+            opacity: 0
+            transform: scale(0.5)
+
+        .list__ul
+            list-style-type: none
+            margin: 0
+            padding: 0
+
+        .list__input
+            display: flex
+            margin-bottom: 0.5em
+
+        .list__item
+            display: block
+            margin-bottom: 0.25em
+
+
         .content
             height: 100vh
             overflow-y: auto
@@ -56,24 +79,12 @@
             background-size: cover
 
             button.add
-                box-shadow: 0 1px 0 #ccc,
-                0 2px 0 #c9c9c9,
-                0 3px 0 #bbb,
-                0 4px 0 #b9b9b9,
-                0 5px 0 #aaa,
-                0 6px 1px rgba(0,0,0,.1),
-                0 0 5px rgba(0,0,0,.1),
-                0 1px 3px rgba(0,0,0,.3),
-                0 3px 5px rgba(0,0,0,.2),
-                0 5px 10px rgba(0,0,0,.25),
-                0 10px 10px rgba(0,0,0,.2),
-                0 20px 20px rgba(0,0,0,.15)
                 background-color: green
                 color: white
                 border-radius: 50%
                 height: 50px
                 width: 50px
-                border: 2px solid white
+                border: 1px solid #ced4da
                 margin: 40px auto
                 display: block
 
