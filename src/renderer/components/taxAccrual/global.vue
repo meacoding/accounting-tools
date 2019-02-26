@@ -84,9 +84,10 @@
 
             </form>
             <div class="bottomElement">
-                Tax Accrual: <span :class="{red:taxAccrual<0, green:taxAccrual>0}">{{numberWithCommasAndDollarSign(taxAccrual)}}</span> <br>
-                Mat'l ADJ: <span :class="{red:materialAdjustment<0, red:materialAdjustment>0}">{{numberWithCommasAndDollarSign(materialAdjustment)}}</span>
-
+                <div>Tax Accrual:</div> <div :class="{red:taxAccrual<0, green:taxAccrual>0}">{{numberWithCommasAndDollarSign(taxAccrual)}}</div> <br>
+                <div>Mat'l ADJ:</div> <div :class="{red:materialAdjustment<0, green:materialAdjustment>0}">{{numberWithCommasAndDollarSign(materialAdjustment)}}</div> <br>
+                <div>Total Before Tax:</div> <div>{{numberWithCommasAndDollarSign(totalBeforeTax)}}</div> 
+                <div>Total Tax Per PO:</div> <div>{{numberWithCommasAndDollarSign(totalTaxPerPO)}}</div>
             </div>
 
         </div>
@@ -124,9 +125,15 @@
           return (Number(this.$store.state.UI.globalVariables.invoiceTotal) - Number(this.cardTotal)).toFixed(2)
         },
         materialAdjustment () {
-          console.log('cardTotal', this.cardTotal)
-          console.log('cardSubTotal', this.cardSubTotal)
+          // console.log('cardTotal', this.cardTotal)
+          // console.log('cardSubTotal', this.cardSubTotal)
           return (Number(this.cardTotal - (this.cardSubTotal * (1.06 + Number(this.countyTax))))).toFixed(2)
+        },
+        totalBeforeTax () {
+          return ((Number(this.$store.state.UI.globalVariables.invoiceTotal) - (1.06 + Number(this.countyTax)))).toFixed(2)
+        },
+        totalTaxPerPO () {
+          return ((this.cardSubTotal) * (0.06 + Number(this.countyTax))).toFixed(2)
         },
         cardTotal () {
           let cardTotal = 0

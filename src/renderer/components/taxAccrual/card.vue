@@ -34,9 +34,10 @@
             </div>
 
             <div class="col-6">
-                Total Tax: <strong>{{numberWithCommasAndDollarSign(totalTax)}}</strong>
+                
+                Subtotal: <strong>{{numberWithCommasAndDollarSign(subTotal)}}</strong>
                 <br>
-                Sub Total: <strong>{{numberWithCommasAndDollarSign(subTotal)}}</strong>
+                Total Tax: <strong>{{numberWithCommasAndDollarSign(totalTax)}}</strong>
                 <br>
                 Total:  <strong>{{numberWithCommasAndDollarSign(total)}}</strong>
             </div>
