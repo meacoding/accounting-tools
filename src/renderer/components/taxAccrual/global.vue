@@ -69,6 +69,22 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
+                        <span class="input-group-text inputWidth" id="inputGroup-sizing-sm">Freight</span>
+                    </div>
+                    <input type="number"
+                           @focus="$event.target.select()"
+                           class="form-control"
+                           placeholder=""
+                           aria-label="Freight"
+                           aria-describedby="basic-addon1"
+                           v-model="freight"
+                           focus="focused['4']" 
+                           v-on:keyup.enter="changeFocus(5, 4)">
+
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
                         <span class="input-group-text inputWidth" id="inputGroup-sizing-sm">Invoice Total</span>
                     </div>
                     <input type="number"
@@ -79,15 +95,15 @@
                            aria-describedby="basic-addon1"
                            v-model="invoiceTotal"
                            focus="focused['4']" 
-                           v-on:keyup.enter="changeFocus(0, 4)">
+                           v-on:keyup.enter="changeFocus(0, 5)">
                 </div>
 
             </form>
             <div class="bottomElement">
-                <div>Tax Accrual:</div> <div :class="{red:taxAccrual<0, green:taxAccrual>0}">{{numberWithCommasAndDollarSign(taxAccrual)}}</div> <br>
-                <div>Mat'l ADJ:</div> <div :class="{red:materialAdjustment<0, green:materialAdjustment>0}">{{numberWithCommasAndDollarSign(materialAdjustment)}}</div> <br>
-                <div>Total Before Tax:</div> <div>{{numberWithCommasAndDollarSign(totalBeforeTax)}}</div> 
-                <div>Total Tax Per PO:</div> <div>{{numberWithCommasAndDollarSign(totalTaxPerPO)}}</div>
+                <div>Tax Accrual:</div> <div :class="{red:taxAccrual<0, green:taxAccrual>0}">{{numberWithCommasAndDollarSign(taxAccrual)}}</div>
+                <div>Mat'l ADJ:</div> <div :class="{red:materialAdjustment<0, green:materialAdjustment>0}">{{numberWithCommasAndDollarSign(materialAdjustment)}}</div>
+                <div>Total Before Tax: {{numberWithCommasAndDollarSign(totalBeforeTax)}}</div> 
+                <div>Total Tax Per PO: {{numberWithCommasAndDollarSign(totalTaxPerPO)}}</div>
             </div>
 
         </div>
@@ -104,7 +120,8 @@
             '1': false,
             '2': false,
             '3': false,
-            '4': false
+            '4': false,
+            '5': false
           }
         }
       },
@@ -122,7 +139,7 @@
       },
       computed: {
         taxAccrual () {
-          return (Number(this.$store.state.UI.globalVariables.invoiceTotal) - Number(this.cardTotal)).toFixed(2)
+          return (Number(this.invoiceTotal) - Number(this.cardTotal) - Number(this.freight)).toFixed(2)
         },
         materialAdjustment () {
           // console.log('cardTotal', this.cardTotal)
@@ -130,7 +147,7 @@
           return (Number(this.cardTotal - (this.cardSubTotal * (1.06 + Number(this.countyTax))))).toFixed(2)
         },
         totalBeforeTax () {
-          return ((Number(this.$store.state.UI.globalVariables.invoiceTotal) - (1.06 + Number(this.countyTax)))).toFixed(2)
+          return ((Number(this.invoiceTotal) - (this.cardSubTotal * (0.06 + Number(this.countyTax))))).toFixed(2)
         },
         totalTaxPerPO () {
           return ((this.cardSubTotal) * (0.06 + Number(this.countyTax))).toFixed(2)
@@ -222,6 +239,18 @@
             }
             this.$store.commit('setGlobalVariables', obj)
           }
+        },
+        freight: {
+          get () {
+            return this.$store.state.UI.globalVariables.freight
+          },
+          set (value) {
+            let obj = {
+              value,
+              name: 'freight'
+            }
+            this.$store.commit('setGlobalVariables', obj)
+          }
         }
       }
     }
@@ -234,16 +263,16 @@
 
     .global
         color: white
-        padding-top: 50px
+        padding-top: 30px
         position: fixed
         width: 28%
         padding-right: 10px
         padding-left: 20px
         height: calc(100vh - 39px)
         bottom: 0
-        background-color: rgba(0, 74, 103, 0.3)
+        background-color: #2d3945
         left: 0
-        border-right: 1px solid #ced4da;
+        border-right: 1px solid #ced4da
 
         .box
             // border: 1px solid white

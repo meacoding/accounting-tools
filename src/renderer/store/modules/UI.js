@@ -5,7 +5,8 @@ const state = {
     invoiceNumber: '',
     subtotalOnInvoice: 0,
     invoiceTotal: 0,
-    countyTax: 0.01
+    countyTax: 0.01,
+    freight: 0
   },
   entries: [
     {

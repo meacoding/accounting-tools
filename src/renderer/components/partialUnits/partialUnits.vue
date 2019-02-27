@@ -1,5 +1,6 @@
 <template>
   <div id="partialUnits">Partial Units
+    <div id="disablingOverlay">Module Incomplete</div>
     <div class="row">
       <div class="col-6">
 
@@ -95,6 +96,18 @@
 </script>
 
 <style lang="sass">
+    #disablingOverlay
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      // top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(255,255,255,0.5);
+      font-size: 50px
+      text-align: center
+      padding-top: 150px
     .content
       color: black
       border: 1px solid #ced4da
