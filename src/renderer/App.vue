@@ -69,7 +69,7 @@
   html, body, #app
     width: 100%
     height: 100%
-    background: url(/static/back2.jpg) no-repeat center center fixed
+    background: url(/static/back.jpg) no-repeat center center fixed
     background-size: cover
 
   input[type=number]::-webkit-inner-spin-button, 

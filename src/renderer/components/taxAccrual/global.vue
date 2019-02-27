@@ -99,11 +99,20 @@
                 </div>
 
             </form>
+            
             <div class="bottomElement">
-                <div>Tax Accrual:</div> <div :class="{red:taxAccrual<0, green:taxAccrual>0}">{{numberWithCommasAndDollarSign(taxAccrual)}}</div>
-                <div>Mat'l ADJ:</div> <div :class="{red:materialAdjustment<0, green:materialAdjustment>0}">{{numberWithCommasAndDollarSign(materialAdjustment)}}</div>
-                <div>Total Before Tax: {{numberWithCommasAndDollarSign(totalBeforeTax)}}</div> 
-                <div>Total Tax Per PO: {{numberWithCommasAndDollarSign(totalTaxPerPO)}}</div>
+                <div class="flex">
+                  <div>Tax Accrual:</div> <div :class="{red:taxAccrual<0, green:taxAccrual>0}">{{numberWithCommasAndDollarSign(taxAccrual)}}</div>
+                </div>
+                <div class="flex">
+                  <div>Mat'l ADJ:</div> <div :class="{red:materialAdjustment<0, green:materialAdjustment>0}">{{numberWithCommasAndDollarSign(materialAdjustment)}}</div>
+                </div>
+                <div class="flex">
+                  <div>Total Before Tax:</div> <div>{{numberWithCommasAndDollarSign(totalBeforeTax)}}</div> 
+                </div>
+                <div class="flex">
+                  <div>Total Tax Per PO:</div> <div>{{numberWithCommasAndDollarSign(totalTaxPerPO)}}</div>
+                </div>
             </div>
 
         </div>
@@ -142,8 +151,6 @@
           return (Number(this.invoiceTotal) - Number(this.cardTotal) - Number(this.freight)).toFixed(2)
         },
         materialAdjustment () {
-          // console.log('cardTotal', this.cardTotal)
-          // console.log('cardSubTotal', this.cardSubTotal)
           return (Number(this.cardTotal - (this.cardSubTotal * (1.06 + Number(this.countyTax))))).toFixed(2)
         },
         totalBeforeTax () {
@@ -265,7 +272,7 @@
         color: white
         padding-top: 30px
         position: fixed
-        width: 28%
+        width: 30%
         padding-right: 10px
         padding-left: 20px
         height: calc(100vh - 39px)
@@ -304,40 +311,15 @@
             height: 100vh
             padding: 20px
             background: rgb(17,169,226)
-            background: -moz-linear-gradient(top, rgba(17,169,226,1) 0%, rgba(41,137,216,1) 100%)
-            background: -webkit-linear-gradient(top, rgba(17,169,226,1) 0%,rgba(41,137,216,1) 100%)
-            background: linear-gradient(to bottom, rgba(17,169,226,1) 0%,rgba(41,137,216,1) 100%)
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#11a9e2', endColorstr='#2989d8',GradientType=0 )
-
-            .bottomElement
-                padding: 10px
-                background-color: white
-                width: 19%
-                border-radius: 6px
-                position: fixed
-                bottom: 25px
-                left: 3%
-                box-shadow: 0 1px 0 #ccc,
-                0 2px 0 #c9c9c9,
-                0 3px 0 #bbb,
-                0 4px 0 #b9b9b9,
-                0 5px 0 #aaa,
-                0 6px 1px rgba(0,0,0,.1),
-                0 0 5px rgba(0,0,0,.1),
-                0 1px 3px rgba(0,0,0,.3),
-                0 3px 5px rgba(0,0,0,.2),
-                0 5px 10px rgba(0,0,0,.25),
-                0 10px 10px rgba(0,0,0,.2),
-                0 20px 20px rgba(0,0,0,.15)
 
         .inputWidth
             width: 125px
 
         .green
-            color: green
+            color: lightgreen
 
         .red
-            color: red
+            color: #fb9a9a
 
         .form-control
             margin-right: 10px
@@ -348,4 +330,19 @@
 
             .input-group
                 width: 100%
+        
+        .input-group-text
+            background-color: white
+            color: black
+
+        .flex
+            display: flex
+            align-content: center
+            justify-content: space-between
+            width: 95%
+            padding: 5px 0
+            border-bottom: 1px solid #999
+
+        .bottomElement
+            margin-top: 50px
 </style>

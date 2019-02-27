@@ -1,6 +1,6 @@
 <template>
       <div class="card">
-          <button class="remove" @click="removeEntry">x</button>
+          <input type="button" class="remove" @click="removeEntry">&#215;</button>
         <div class="card-body">
           <div class="row">
             <div class="col-6">
@@ -33,13 +33,16 @@
                 </div>
             </div>
 
-            <div class="col-6">
-                
-                Subtotal: <strong>{{numberWithCommasAndDollarSign(subTotal)}}</strong>
-                <br>
-                Total Tax: <strong>{{numberWithCommasAndDollarSign(totalTax)}}</strong>
-                <br>
-                Total:  <strong>{{numberWithCommasAndDollarSign(total)}}</strong>
+            <div class="col-6 card-totals">
+              <div class="flex">  
+                <div>Subtotal:</div> <div>{{numberWithCommasAndDollarSign(subTotal)}}</div>
+              </div>
+              <div class="flex">
+                <div>Total Tax:</div> <div>{{numberWithCommasAndDollarSign(totalTax)}}</div>
+              </div>
+              <div class="flex">
+                <div>Total:</div> <div>{{numberWithCommasAndDollarSign(total)}}</div>
+              </div>
             </div>
           </div>
         </div>
@@ -112,26 +115,47 @@ export default {
 
 <style lang="sass">
     .content
+        // background-color: white
+
         .card
-            color: white
-            margin: 28px
+            color: black
+            margin: 30px 75px
             border: 1px solid #ced4da
-            background-color: rgba(0, 46, 103, 0.3)
 
             button.remove
-                background-color: rgb(134, 16, 21)
-                color: white
+                // background-color: rgb(134, 16, 21)
+                // color: white
                 border-radius: 50%
-                height: 50px
-                width: 50px
-                position: absolute
-                border: 1px solid #ced4da
-                right: -15px
+                height: 20px
+                width: 20px
+                // position: absolute
+                // border: 1px solid #ced4da
+                // right: -15px
                 top: -15px
-
+                background-color: transparent;
+                position: absolute;
+                border: none;
+                right: 20px;
+                font-size: 30px;
+                &:hover, &:active
+                //     font-size: 30px
+                //     color: red
+                //     right: 20px;
+                    background-color: yellow
                 &:focus
                     outline: none
                   
         .inputWidth
             width: 125px
+
+        .form-control
+            color: black
+        
+        .flex
+            display: flex
+            align-content: center
+            justify-content: space-between
+            width: 85%
+            color: #999
+        
 </style>

@@ -97,21 +97,19 @@
 
 <style lang="sass">
     #disablingOverlay
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      // top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(255,255,255,0.5);
+      position: fixed
+      z-index: 1
+      left: 0
+      width: 100%
+      height: 100%
+      overflow: auto
+      background-color: rgba(0,0,0,0.5)
       font-size: 50px
       text-align: center
       padding-top: 150px
     .content
       color: black
-      border: 1px solid #ced4da
-      background-color: rgba(0, 46, 103, 0.3)       
+      border: 1px solid #ced4da      
     .inputWidth
         width: 125px
 </style>
