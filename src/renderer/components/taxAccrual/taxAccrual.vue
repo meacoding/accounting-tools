@@ -8,8 +8,7 @@
         :entry="entry"
         v-for="(entry, entryIndex) in entries"></card>
       </transition-group>
-
-      <button class="add" @click="addEntry">+</button>
+      <span class="add" @click="addEntry">+</span>
     </div>
   </div>
 </template>
@@ -44,6 +43,8 @@
 
 <style lang="sass">
     #wrapper
+        display: flex
+        flex-direction: row
         height: 100vh
         width: 100%
         position: fixed
@@ -72,22 +73,17 @@
 
         .content
             height: 100vh
-            overflow-y: auto
-            width: 72%
-            margin-left: 28%
-            float: left
-            background-size: cover
+            width: 70%
+            overflow: scroll
 
-            button.add
-                background-color: green
-                color: white
-                border-radius: 50%
-                height: 50px
-                width: 50px
-                border: 1px solid #ced4da
+            .add
+                color: black
                 margin: 40px auto
                 display: block
-
-                &:focus
-                    outline: none
+                font-size: 55px;
+                font-weight: bold;
+                width: 40px;
+                &:hover, &:active
+                    text-decoration: none;
+                    cursor: pointer; 
 </style>

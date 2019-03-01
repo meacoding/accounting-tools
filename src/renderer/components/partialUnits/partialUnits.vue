@@ -106,10 +106,7 @@
       background-color: rgba(0,0,0,0.5)
       font-size: 50px
       text-align: center
-      padding-top: 150px
-    .content
-      color: black
-      border: 1px solid #ced4da      
+      padding-top: 150px     
     .inputWidth
         width: 125px
 </style>

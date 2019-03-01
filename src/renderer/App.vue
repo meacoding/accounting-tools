@@ -2,23 +2,22 @@
   <div id="app">
   <div class="topBar">
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
-      <label class="btn btn-secondary active">
+      <label class="btn btn-secondary" for="option1">
         <input  type="radio"
                 v-model="tabState"
                 value="taxAccrual"
-                name="options"
                 id="option1"
                 autocomplete="off"
-                checked>
+                >
         Tax Accrual
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-secondary" for="option2">
         <input type="radio"
                v-model="tabState"
                value="partialUnits"
-               name="options"
-               id="option"
-               autocomplete="off">
+               id="option2"
+               autocomplete="off"
+               >
         Partial Units
       </label>
     </div>
@@ -47,9 +46,6 @@
       }
     },
     methods: {
-      setTab (tab) {
-        this.tabState = tab
-      },
       print () {
         let win = remote.getCurrentWindow()
         let picturesDir = path.join(remote.app.getPath('pictures'), 'screenshot.pdf')
@@ -87,4 +83,13 @@
 
     .btn
         border-radius: 0 !important
+
+    .btn-group-toggle > .btn input[type="radio"]
+        position: static
+
+    .btn-secondary
+      border: none
+      height: 38px
+      background-color: transparent
+    
 </style>

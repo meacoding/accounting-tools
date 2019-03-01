@@ -94,23 +94,23 @@
                            aria-label="Invoice Total"
                            aria-describedby="basic-addon1"
                            v-model="invoiceTotal"
-                           focus="focused['4']" 
+                           focus="focused['5']" 
                            v-on:keyup.enter="changeFocus(0, 5)">
                 </div>
 
             </form>
             
             <div class="bottomElement">
-                <div class="flex">
+                <div class="flex-global">
                   <div>Tax Accrual:</div> <div :class="{red:taxAccrual<0, green:taxAccrual>0}">{{numberWithCommasAndDollarSign(taxAccrual)}}</div>
                 </div>
-                <div class="flex">
+                <div class="flex-global">
                   <div>Mat'l ADJ:</div> <div :class="{red:materialAdjustment<0, green:materialAdjustment>0}">{{numberWithCommasAndDollarSign(materialAdjustment)}}</div>
                 </div>
-                <div class="flex">
+                <div class="flex-global">
                   <div>Total Before Tax:</div> <div>{{numberWithCommasAndDollarSign(totalBeforeTax)}}</div> 
                 </div>
-                <div class="flex">
+                <div class="flex-global">
                   <div>Total Tax Per PO:</div> <div>{{numberWithCommasAndDollarSign(totalTaxPerPO)}}</div>
                 </div>
             </div>
@@ -264,14 +264,10 @@
 </script>
 
 <style lang="sass">
-    @media screen and (min-width: 1155px)
-        .threeDText
-            font-size: 18pt !important
 
     .global
         color: white
         padding-top: 30px
-        position: fixed
         width: 30%
         padding-right: 10px
         padding-left: 20px
@@ -279,33 +275,9 @@
         bottom: 0
         background-color: #2d3945
         left: 0
-        border-right: 1px solid #ced4da
 
         .box
-            // border: 1px solid white
             padding: 20px
-
-        .threeDText
-            border-bottom: 1px solid white
-            padding: 20px
-            font: bold 100px/1 "Helvetica Neue", Helvetica, Arial, sans-serif
-            text-align: center
-            font-size: 13pt
-            background-color: #11a9e2
-            color: white
-            // background-color: #2989D8
-            // text-shadow: 0 1px 0 #ccc,
-            // 0 2px 0 #c9c9c9,
-            // 0 3px 0 #bbb,
-            // 0 4px 0 #b9b9b9,
-            // 0 5px 0 #aaa,
-            // 0 6px 1px rgba(0,0,0,.1),
-            // 0 0 5px rgba(0,0,0,.1),
-            // 0 1px 3px rgba(0,0,0,.3),
-            // 0 3px 5px rgba(0,0,0,.2),
-            // 0 5px 10px rgba(0,0,0,.25),
-            // 0 10px 10px rgba(0,0,0,.2),
-            // 0 20px 20px rgba(0,0,0,.15)
 
         .navbar
             height: 100vh
@@ -323,6 +295,8 @@
 
         .form-control
             margin-right: 10px
+            color: white
+            text-align: right
 
         .form-inline
             top: 30px
@@ -335,7 +309,7 @@
             background-color: white
             color: black
 
-        .flex
+        .flex-global
             display: flex
             align-content: center
             justify-content: space-between
@@ -345,4 +319,5 @@
 
         .bottomElement
             margin-top: 50px
+            color: #dee2e6
 </style>
