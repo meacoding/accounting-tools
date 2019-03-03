@@ -1,9 +1,9 @@
 {
-  "name": "Tax_Accrual",
-  "version": "0.0.0",
+  "name": "accounting-tools",
+  "version": "1.0.0",
   "author": "Amanda Harness <16675876+meacoding@users.noreply.github.com>",
   "description": "An electron-vue project",
-  "license": null,
+  "license": "ISC",
   "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",
@@ -19,7 +19,7 @@
     "postinstall": "npm run lint:fix"
   },
   "build": {
-    "productName": "Tax_Accrual",
+    "productName": "accounting-tools",
     "appId": "org.simulatedgreg.electron-vue",
     "directories": {
       "output": "build"
@@ -53,11 +53,20 @@
     }
   },
   "dependencies": {
+    "atob": "^2.1.2",
     "axios": "^0.16.1",
+    "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.2",
+    "cryptiles": "^4.1.3",
+    "deep-extend": "^0.6.0",
+    "extend": "^3.0.2",
     "jquery": "^3.3.1",
+    "lodash": "^4.17.11",
+    "macaddress": "^0.2.9",
+    "randomatic": "^3.1.1",
     "sass": "^1.17.2",
     "sass-loader": "^6.0.7",
+    "url-parse": "^1.4.4",
     "vue": "^2.3.3",
     "vue-electron": "^1.0.6",
     "vue-focus": "^2.1.0",
@@ -80,7 +89,7 @@
     "css-loader": "^0.28.4",
     "del": "^3.0.0",
     "devtron": "^1.4.0",
-    "electron": "^1.7.5",
+    "electron": "^4.0.6",
     "electron-builder": "^19.19.1",
     "electron-debug": "^1.4.0",
     "electron-devtools-installer": "^2.2.0",
@@ -106,7 +115,11 @@
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.4.2",
     "webpack": "^3.5.2",
-    "webpack-dev-server": "^2.7.1",
+    "webpack-dev-server": "^3.0.0",
     "webpack-hot-middleware": "^2.18.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/meacoding/accounting-tools.git"
   }
 }
