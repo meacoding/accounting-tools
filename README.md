@@ -4,7 +4,7 @@ A desktop app that replaces a user error-prone spreadsheet used in my accounts p
 
 ![accounting-tools screenshot](https://user-images.githubusercontent.com/16675876/59708345-91fdcd80-91d2-11e9-9197-aff2a53aa2e5.jpg)
 
-## Technologies used 
+## Technologies and skills used 
 
 + HTML
 + CSS
