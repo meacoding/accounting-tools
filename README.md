@@ -30,3 +30,6 @@ I saw this as the perfect opportunity to stretch my legs in a new framework—Vu
 This was the first programming anything I learned through immersion. I didn't know how Vue.js worked let alone what a package.json file was. I stayed inside the Vue components for as long as I could. The day came when I needed input content to be usable for real-time calculation display. At the time I didn't understand how data sharing between components in plain Vue.js worked let alone retrieving state from Vuex. I understood how JavaScript objects worked! I understand their differences now but at the time I needed dear ol' mentor to point me to the right resource.
 
 Once I got the hang of how to code and maneuver around this big, scary "real-world" project, I started to appreciate the simplicity of putting all relevant code in one self-contained Vue component. I could make the components talk to each other and, together, they became an app. How cool is that!
+
+## License
+None.
