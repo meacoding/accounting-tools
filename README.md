@@ -2,8 +2,7 @@
 
 A desktop app that replaces a user error-prone spreadsheet used in my current accounts payable position. 
 
-![project-at](![rsz_2project-at](https://user-images.githubusercontent.com/16675876/59708345-91fdcd80-91d2-11e9-9197-aff2a53aa2e5.jpg)
-)
+![rsz_2project-at](https://user-images.githubusercontent.com/16675876/59708345-91fdcd80-91d2-11e9-9197-aff2a53aa2e5.jpg)
 
 ## Technologies used 
 
