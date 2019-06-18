@@ -1,6 +1,6 @@
 # Accounting Tools
 
-A desktop app that replaces a user error-prone spreadsheet used in my current accounts payable position. 
+A desktop app that replaces a user error-prone spreadsheet used in my accounts payable position. 
 
 ![accounting-tools](https://user-images.githubusercontent.com/16675876/59708345-91fdcd80-91d2-11e9-9197-aff2a53aa2e5.jpg)
 
