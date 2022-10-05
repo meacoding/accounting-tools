@@ -1,6 +1,6 @@
 # Accounting Tools
 
-A desktop app that replaces a user error-prone spreadsheet used in my accounts payable position. 
+A desktop app that replaces a user error-prone spreadsheet used in my previous accounts payable position. 
 
 ![accounting-tools screenshot](https://user-images.githubusercontent.com/16675876/59708345-91fdcd80-91d2-11e9-9197-aff2a53aa2e5.jpg)
 
@@ -21,9 +21,9 @@ To learn a reactive framework.
 This desktop accounting tool is setup for multiple modules allowing for future tool additions. The main module, Tax Accrual, takes user input from the main form and the multiple card inputs, stores the content with Vuex and displays real-time calculations. Bootstrap was utilized for input fields and grid system. 
 
 ## Backstory
- I work in accounts payable. We frequently need to perform calculations for material purchases over a certain threshold. We have a spreadsheet for that.
+I worked in accounts payable. We frequently needed to perform calculations for material purchases over a certain threshold. We had a spreadsheet for that.
 
-This spreadsheet is unnecessarily difficult to learn and understand. We have multiple versions for different tax rate and freight scenarios. I thought to myself, "Maybe I could consolidate these and make one single spreadsheet that does everything and is easier on the eyes."
+This spreadsheet was unnecessarily difficult to learn and understand. We had multiple versions for different tax rate and freight scenarios. I thought to myself, "Maybe I could consolidate these and make one single spreadsheet that does everything and is easier on the eyes." 
 
 I saw this as the perfect opportunity to stretch my legs in a new framework—Vue.js. I asked my mentor if he could provide the foundation to start a new project in Vue.js as if it were a project he'd develop for his company. "Sure!" he said. "I'll even throw Electron in there so you can make a desktop app instead of a web app." Say what?
 
